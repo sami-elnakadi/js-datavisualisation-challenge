@@ -25,8 +25,8 @@ for (let i=0; i<data.length; i++){
 
 
   let myChart = new dimple.chart(svg,donne);
-  myChart.addCategoryAxis("x", 'Abscisse');
-  myChart.addMeasureAxis("y", 'Ordonne');
+  myChart.addCategoryAxis("x", 'Ordonne');
+  myChart.addMeasureAxis("y", 'Abscisse');
   myChart.addSeries("donne", dimple.plot.bar);
   myChart.draw();
   setTimeout(function (){

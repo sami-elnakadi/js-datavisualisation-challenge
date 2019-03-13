@@ -1,7 +1,7 @@
 //Partie2
 
 let svg = dimple.newSvg("#graph", 590, 400);
-
+let caca = function(){
 async function getData()
 {
     let response = await fetch('https://inside.becode.org/api/v1/data/random.json');
@@ -29,9 +29,14 @@ for (let i=0; i<data.length; i++){
   myChart.addMeasureAxis("y", 'Ordonne');
   myChart.addSeries("donne", dimple.plot.bar);
   myChart.draw();
-
+  setTimeout(function (){
+myChart.svg.selectAll('*').remove()
+  caca()
+},2000)
+  
 }).catch(err =>{
   console.log("erreur");
 })
-
+}
+caca();
 

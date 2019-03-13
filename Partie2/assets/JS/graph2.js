@@ -17,8 +17,8 @@ let donne = [];
 
 for (let i=0; i<data.length; i++){
     donne.push({
-      'Abscisse': data[i][0],
-      'Ordonne': data[i][1]
+      'Ordonne': data[i][0],
+      'Abscisse': data[i][1]
     });
     console.log(donne[i]);
 }

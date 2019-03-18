@@ -1,24 +1,42 @@
-function addDiv(){
-    let newDiv = document.createElement("div")
-    newDiv.id = "graph"
+let newDiv = document.createElement("div")
+newDiv.id = "graph"
+var container = document.getElementById("mw-content-text")
+container.insertBefore(newDiv, table2);
+
+// let tabletd = document.querySelectorAll('#table1 tbody')
+let td = document.querySelectorAll('#table2 td')
+
+let donne1 = []
+let res = []
+
+let svg = dimple.newSvg("#graph", 900, 400);
+
+for (let i= 0; i<td.length; i++){
+    donne1.push(td[i].innerHTML)
 }
-let tableth = document.querySelectorAll('th')
-let tabletd = document.querySelectorAll('td')
 
-for (let i = 0; i<tableth.length; i++){
-    let th = tableth[i].innerHTML
-    console.log(th)
+console.table(donne1);
+
+for (let i = 0; i < donne1.length; i += 3) {
+
+    res.push({
+        "Pays": donne1[i],
+        "data1": donne1[i + 1],
+        "data2": donne1[i + 2],
+    })
 }
+console.table(res)
 
-for (let j = 0; j<tabletd.length; j++){
-    let td = tabletd[j].innerHTML
-    console.log(td)
-}
+let myChart = new dimple.chart(svg,res);
+myChart.setBounds(60, 30, 510, 305)
+let x = myChart.addCategoryAxis("x", "Pays")
 
-// let titre = document.getElementById('Crimes_et_d.C3.A9lits_enregistr.C3.A9s_par_les_services_de_police');
-// titre.innerHTML += '\n' + " HEllo";
-// let table1 = document.getElementById('table1');
-// let jso = JSON.stringify(table1);
-// console.log(jso);
+x.addOrderRule("Pays")
 
-// let titre2=document.getElementById('Homicide');
+let y1 = myChart.addMeasureAxis("y", "data1")
+let y2 = myChart.addMeasureAxis("y", "data2")
+myChart.addSeries("2007-2009", dimple.plot.line, [x, y1]);
+myChart.addSeries("2010-2012", dimple.plot.line, [x, y2]);
+myChart.addLegend(60, 10, 510, 20, "right")
+ 
+  myChart.draw();

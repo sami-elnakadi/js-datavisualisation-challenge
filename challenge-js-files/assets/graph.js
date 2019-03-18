@@ -1,7 +1,9 @@
 let newDiv = document.createElement("div")
 newDiv.id = "graph"
-var container = document.getElementById("mw-content-text")
+let container = document.getElementById("mw-content-text")
 container.insertBefore(newDiv, table2);
+
+//2eme Graphique
 
 // let tabletd = document.querySelectorAll('#table1 tbody')
 let td = document.querySelectorAll('#table2 td')
@@ -21,8 +23,8 @@ for (let i = 0; i < donne1.length; i += 3) {
 
     res.push({
         "Pays": donne1[i],
-        "data1": donne1[i + 1],
-        "data2": donne1[i + 2],
+        "population carcerale 1": donne1[i + 1],
+        "population carcerale 2": donne1[i + 2],
     })
 }
 console.table(res)
@@ -33,8 +35,8 @@ let x = myChart.addCategoryAxis("x", "Pays")
 
 x.addOrderRule("Pays")
 
-let y1 = myChart.addMeasureAxis("y", "data1")
-let y2 = myChart.addMeasureAxis("y", "data2")
+let y1 = myChart.addMeasureAxis("y", "population carcerale 1")
+let y2 = myChart.addMeasureAxis("y", "population carcerale 2")
 myChart.addSeries("2007-2009", dimple.plot.line, [x, y1]);
 myChart.addSeries("2010-2012", dimple.plot.line, [x, y2]);
 myChart.addLegend(60, 10, 510, 20, "right")
